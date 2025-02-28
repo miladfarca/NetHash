@@ -16,7 +16,7 @@ This methodology guarantees unique final hashes. The lower 32 bytes originate fr
 The added I/O overhead and the inherent unpredictability of network operations ensure that CPU power does not influence the hash rate. However, network calls may fail due to timeouts or other errors. In such cases, the algorithm returns -1 to the caller, requiring proper error handling.
 
 ### Build and Usage
-NetHash generates a static C library called `libnethash.a`. A sample file demonstrating its usage can be found in example/main.c.
+NetHash generates a static C library called `libnethash.a`. A sample file demonstrating its usage can be found in [example/main.c](example/main.c).
 
 Additionally, you can build the `nethash-tests` executable to run tests and benchmark the performance of NetHash on your system.
 
