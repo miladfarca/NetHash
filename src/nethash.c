@@ -301,7 +301,8 @@ int nethash_compute(const char* string, unsigned char* nethash_buffer) {
       }
     }
 
-    nethash_raw_buffer[j] = (two_bytes_data >> 8) ^ (two_bytes_data & 0xff);
+    uint16_t combined = two_bytes_data ^ chunks[i];
+    nethash_raw_buffer[j] = (combined >> 8) ^ (combined & 0xff);
   }
 
   // Create the final hash
