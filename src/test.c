@@ -28,7 +28,7 @@ int tests_run = 0;
 
 static char *test_1(){
   const char* input = "Hello, NetHash!";
-  const char* expectation = "2610114f52579190ca4cb11b36469230686838288a87edcd6322b6178494948747e1a02d65272fcf";
+  const char* expectation = "7f4e4f5252040052ca4cb11b36469230686838288a87edcd6322b6178494948747e1a02d65272fcf";
   RUN("test_1", input, expectation);
 
   return 0;
@@ -36,7 +36,7 @@ static char *test_1(){
 
 static char *test_2(){
   const char* input = "";
-  const char* expectation = "3e6634185f521807e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+  const char* expectation = "1107525215520052e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
   RUN("test_2", input, expectation);
 
   return 0;
@@ -44,7 +44,7 @@ static char *test_2(){
 
 static char *test_3(){
   const char* input = " ";
-  const char* expectation = "3e525b0b5252411936a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068";
+  const char* expectation = "075a52525202525236a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068";
   RUN("test_3", input, expectation);
 
   return 0;
@@ -52,7 +52,7 @@ static char *test_3(){
 
 static char *test_4(){
   const char* input = "~!@#$%^&*()_+{}\":?><";
-  const char* expectation = "2c124b4a0f4a5947609c88bc563168478b6d236fbdb12659bbdb58991ae96f521ec494aa7b203a43";
+  const char* expectation = "045a4f04121c1a51609c88bc563168478b6d236fbdb12659bbdb58991ae96f521ec494aa7b203a43";
   RUN("test_4", input, expectation);
 
   return 0;
@@ -60,7 +60,7 @@ static char *test_4(){
 
 static char *test_5(){
   const char* input = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.";
-  const char* expectation = "6f0230125418e5d061cce8c2ff996f2e87d6c797b35a5d163600b2385f121a2c6c6eb44dacd928fc";
+  const char* expectation = "0d6c520518201a1a61cce8c2ff996f2e87d6c797b35a5d163600b2385f121a2c6c6eb44dacd928fc";
   RUN("test_5", input, expectation);
 
   return 0;

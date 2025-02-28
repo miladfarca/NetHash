@@ -193,7 +193,7 @@ static int nethash_query_ipfs(struct nethash_ipfs_data* query_data) {
 
 int nethash_compute(const char* string, unsigned char* nethash_buffer) {
 
-  uint64_t nethash = 0;
+  unsigned char nethash_raw_buffer[NETHASH_RAW_SIZE] = {0};
 
   // sha256
   unsigned char sha256_buffer[EVP_MAX_MD_SIZE];
@@ -256,7 +256,7 @@ int nethash_compute(const char* string, unsigned char* nethash_buffer) {
   query_data.get_href = 1;
 
   // Loop though chunks two at a time.
-  for (int i = 1; i < CHUNKS_SIZE; i += 2){
+  for (int i = 1, j=0; i < CHUNKS_SIZE; i += 2, j++){
     // Do not get or process a new href at i = 15.
     if (i >= 15)
       query_data.get_href = 0;
@@ -301,19 +301,17 @@ int nethash_compute(const char* string, unsigned char* nethash_buffer) {
       }
     }
 
-    // Current lowest byte of nethash will be part
-    // of the XOR operation.
-    nethash = (nethash << 8) ^ two_bytes_data;
+    nethash_raw_buffer[j] = (two_bytes_data >> 8) ^ (two_bytes_data & 0xff);
   }
 
   // Create the final hash
-  memcpy(nethash_buffer, (unsigned char*)&nethash, NETHASH_RAW_SIZE);
+  memcpy(nethash_buffer, nethash_raw_buffer, NETHASH_RAW_SIZE);
   memcpy(nethash_buffer + NETHASH_RAW_SIZE, sha256_buffer, SHA256_SIZE);
 
   if (flag__verbose){
     printf("NetHash raw: ");
     for (int i = 0; i < NETHASH_RAW_SIZE; i++)
-      printf("%02x", ((unsigned char*)&nethash)[i]);
+      printf("%02x", nethash_raw_buffer[i]);
     printf("\n");
 
     printf("NetHash: ");
